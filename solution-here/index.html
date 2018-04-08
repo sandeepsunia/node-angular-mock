@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="mockApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Interview Test</title>
+        <link href="stylesheets/style.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+    </head>
+    <body ng-controller="mockController" ng-init="init()">
+        {{error}}
+        <br><br>
+        <input class="search" placeholder="search" type="text" ng-model="searchFilter.name">
+        <br/><br/>
+        <table border="1" width="90%">
+            <tr>
+                <th style="text-align:left;"> Date</th>
+                <th style="text-align:left;"> Age </th>
+                <th style="text-align:left;"> Name </th>
+                <th style="text-align:left;"> Edit </th>
+                <th style="text-align:left;"> Delete </th>
+            </tr>
+            <tr ng-repeat="user in users | filter:searchFilter">
+                <td> {{user.date | date:'MMM dd yyyy'}} </td>
+                <td> {{user.age}} </td>
+                <td> {{user.name}} </td>
+                <td> <img src="./images/edit.png" ng-click="editSelectedUser(user.id, user.date, user.name, user.age)" /> </td>
+                <td> <img src="./images/delete.png" ng-click="deleteUser(user.id)" /> </td>
+            </tr>
+        </table>
+        <br/>
+        <form ng-submit="!toggle ? addUser() : editUser()">
+            <input ng-hide="true" ng-model="id">
+            <input ng-hide="true" ng-model="age">
+            <label for="name" >Name </label>
+            <input type="text" class="input1" ng-model="newUser.name" required>
+            <label for="age" class="label" >Age </label>
+            <input type="number" min="0" class="input2" ng-keyup="checkRecord()" ng-model="newUser.age" required>
+            <input type="submit" class="input3" value="{{toggleText}}">
+            <br><br>{{recordText}}
+        </form>
+    </body>
+</html>

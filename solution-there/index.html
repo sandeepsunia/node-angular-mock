@@ -1,0 +1,43 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="./stylesheets/style.css" rel="stylesheet" type="text/css" media="none" onload="if(media!='all')media='all'">
+	<script type="text/javascript" src="./javascripts/jQuery.js"></script>
+	<script type="text/javascript" src="./javascripts/script.js"></script>
+</head>
+<body>
+	<input type="text" class="search" id="search" placeholder="search" onkeyup="handleSearch()"></br></br>
+	<table id="myTable" border="1" width="90%">
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Age</th>
+				<th>Name</th>
+				<th>Edit</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+		<script type="text/javascript">
+			for (var i=0; i < list.length; i++) {
+		  	document.write(`
+					<tr>
+						<td>${dateFormat(list[i].date)}</td>
+						<td><input class="input" type="text" value="${list[i].age}" ></td>
+						<td><input class="input" type="text" value="${list[i].name}" ></td>
+						<td><img width="20" height="20" src="./images/edit.png" name="${list[i].id}" onClick="Edit(this)"/></td>
+						<td><img width="20" height="20" src="./images/delete.png" id="${list[i].id}" onClick="Delete(this)"/></td>
+					</tr>
+				`);
+			}
+			</script>
+		</tbody>
+	</table>
+</br>
+	<form id="form" onsubmit="createNew()">
+	<span>Name: <input id="name" type="text" required value=""></span>
+	<span style="padding-left:20px;">Age: <input id="age" type="text" required value=""></span>
+	<span style="padding-left:300px"><input type="submit" id="submit" name="submit" value="Create New User"></span>
+</form>
+</body>
+</html>
