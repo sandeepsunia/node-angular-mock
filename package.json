@@ -1,5 +1,6 @@
 {
   "name": "mock-server",
+  "author": "Sandeep Sunia",
   "version": "0.0.1",
   "private": true,
   "scripts": {

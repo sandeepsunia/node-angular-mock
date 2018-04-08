@@ -28,7 +28,7 @@ app.options('*', function (req, res) {
   res.send(200);
 });
 
-app.use(express.static('solution-here'));
+app.use(express.static('angular-implementation'));
 
 app.use('/users', user);
 
